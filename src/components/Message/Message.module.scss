@@ -1,0 +1,95 @@
+@import 'src/app/styles/vars';
+
+$message-radius: $radius-large-xx;
+
+.Message {
+  @include text-body-m-regular;
+  @include transition(transform, opacity);
+
+  border-radius: 1.15rem;
+  line-height: 1.25;
+  max-width: 75%;
+  width: fit-content;
+  padding: 0.5rem .875rem;
+  position: relative;
+  word-wrap: break-word;
+
+  &::after,
+  &::before {
+    bottom: -0.1rem;
+    content: " ";
+    height: 1rem;
+    position: absolute;
+  }
+
+  @include mobile-down {
+    max-width: 100%;
+  }
+}
+
+.Message_type_right {
+  margin-left: auto;
+  transform-origin: right bottom;
+
+  &::before {
+    border-bottom-left-radius: 0.8rem 0.7rem;
+    border-right: 1rem solid transparent;
+    right: -0.35rem;
+    transform: translate(0, -0.1rem);
+  }
+
+  &::after {
+    border-bottom-left-radius: 0.5rem;
+    right: -40px;
+    transform:translate(-30px, -2px);
+    width: 10px;
+  }
+}
+
+.Message_type_left {
+  transform-origin: left bottom;
+
+  &::before {
+    border-bottom-right-radius: 0.8rem 0.7rem;
+    border-left: 1rem solid transparent;
+    left: -0.35rem;
+    transform: translate(0, -0.1rem);
+  }
+
+  &::after {
+    border-bottom-right-radius: 0.5rem;
+    left: 20px;
+    transform: translate(-30px, -2px);
+    width: 10px;
+  }
+}
+
+.Message_variant_primary {
+  background-color: $color-background-accent-500;
+  color: $color-text-invert;
+
+  &::before {
+    border-color: $color-background-accent-500;
+  }
+
+  &::after {
+    background-color: $color-background-primary;
+  }
+}
+
+.Message_variant_secondary {
+  background-color: #e5e5ea;
+  color: $color-text-primary;
+
+  &::before {
+    border-color: #e5e5ea;
+  }
+
+  &::after {
+    background-color: $color-background-primary;
+  }
+}
+
+.Message__title {
+  @include text-body-m-medium;
+}
