@@ -1,0 +1,45 @@
+@import 'src/app/styles/vars';
+
+.Footer {
+  @include flex-middle;
+
+  min-height: $footer-height;
+  padding: $spacing-2xm $spacing-l;
+
+  @include tablet-down {
+    align-items: flex-end;
+  }
+
+  @include mobile-down {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    padding: $spacing-s;
+    row-gap: $spacing-2xm;
+  }
+}
+
+.Footer__name {
+  @include text-body-s-regular;
+
+  flex: 1;
+  color: $color-text-secondary;
+}
+
+.Footer__links {
+  @include flex-middle;
+
+  gap: $spacing-2xs $spacing-xm;
+
+  @include tablet-down {
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  @include mobile-down {
+    align-items: flex-start;
+  }
+}
+
+.Footer__link {
+  text-align: left;
+}

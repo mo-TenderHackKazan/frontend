@@ -1,0 +1,80 @@
+@import 'src/app/styles/vars';
+
+@mixin on-open {
+  @at-root .Sidebar_open & {
+    @content;
+  }
+}
+
+.Sidebar {
+  @include transition(width);
+
+  position: absolute;
+  z-index: 100;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  width: 72px;
+  height: 100%;
+  overflow: hidden;
+  background: rgba(#E7EEF7, 50%);
+
+  @include mobile-down {
+    width: 0;
+  }
+}
+
+.Sidebar_open {
+  width: 260px;
+
+  @include mobile-down {
+    width: 100vw;
+  }
+}
+
+.Sidebar__header {
+  @include flex-col-middle;
+
+  padding: 0 $spacing-s;
+  row-gap: $spacing-m;
+  height: $header-height;
+  //background-color: $color-background-primary;
+  //border-bottom: 1px solid $color-divider-dark;
+}
+
+.Sidebar__toggleIcon {
+  @include mobile-up {
+    @include transition(transform);
+  }
+}
+
+.Sidebar__header_open {
+  @include flex-between;
+
+  //.Sidebar__logo {
+  //  flex: 1;
+  //}
+
+  .Sidebar__toggleIcon {
+    flex: auto;
+    transform: rotate(-180deg);
+  }
+}
+
+.Sidebar__menu {
+  @include flex-col;
+
+  align-items: stretch;
+  padding: $spacing-2xm $spacing-xs 0;
+  row-gap: $spacing-2xs;
+}
+
+.Sidebar__item {
+  width: 100%;
+  min-width: fit-content;
+}
+
+.Sidebar__logo {
+  height: 36px;
+  width: auto;
+}

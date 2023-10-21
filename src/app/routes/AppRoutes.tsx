@@ -1,13 +1,14 @@
 import { Route, Routes } from 'react-router-dom';
-import { CHAT_PAGE_ROUTE, TOKEN_PAGE_ROUTE } from './routes';
-import { ChatPage } from '../../pages/chat';
-import { TokenPage } from '../../pages/token';
+import { HOME_PAGE_ROUTE } from './routes';
+import { HomePage } from '../../pages/home';
+import { UserLayout } from '../../pages/_layouts/UserLayout';
 
 export const AppRoutes = () => {
   return (
     <Routes>
-      <Route path={TOKEN_PAGE_ROUTE} element={<TokenPage />} />
-      <Route path={CHAT_PAGE_ROUTE} element={<ChatPage />} />
+      <Route element={<UserLayout />}>
+        <Route path={HOME_PAGE_ROUTE} element={<HomePage />} />
+      </Route>
     </Routes>
   );
 };

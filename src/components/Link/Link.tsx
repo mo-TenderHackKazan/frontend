@@ -7,8 +7,8 @@ export const LinkDefaultComponent = 'a';
 export type LinkDefaultComponentType = typeof LinkDefaultComponent;
 
 export enum LinkVariant {
-  PRIMARY = 'primary'
-  // SECONDARY = 'secondary'
+  PRIMARY = 'primary',
+  SECONDARY = 'secondary'
 }
 
 export enum LinkSize {

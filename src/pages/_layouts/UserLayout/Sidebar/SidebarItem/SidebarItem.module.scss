@@ -1,0 +1,47 @@
+@import 'src/app/styles/vars';
+
+$border-width: 2px;
+
+.SidebarItem {
+  @include reset-button;
+  @include reset-link;
+  @include flex-center;
+  @include transition(background-color, color);
+
+  padding: $spacing-xs - $border-width;
+  color: $color-text-secondary;
+  border: 2px solid transparent;
+  //border-radius: $spacing-s;
+  //background-color: $color-button-secondary-default-fill;
+  cursor: pointer;
+  column-gap: $spacing-2xs;
+
+  &:hover {
+    color: $color-text-tertiary;
+    //background-color: $color-button-secondary-hover-fill;
+  }
+}
+
+.SidebarItem:focus-visible {
+  border-color: $color-light-system-warning-40;
+}
+
+.SidebarItem_active,
+.SidebarItem:active {
+  color: $color-text-tertiary;
+}
+
+.SidebarItem_open {
+  justify-content: flex-start;
+}
+
+.SidebarItem__text {
+  @include text-caption-m-regular;
+
+  white-space: nowrap;
+  color: inherit;
+}
+
+.SidebarItem__icon {
+  flex-shrink: 0;
+}

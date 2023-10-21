@@ -1,0 +1,49 @@
+@import 'src/app/styles/vars';
+
+.Header {
+}
+
+.Header__main {
+  @include flex-between;
+
+  height: $header-height;
+  padding: $spacing-s;
+  border-bottom: 1px solid $color-divider-dark;
+  background-color: $color-background-primary;
+
+  @include mobile-down {
+    padding: $spacing-s;
+  }
+}
+
+.Header__additional {
+  background-color: $color-background-primary;
+}
+
+.Header__user {
+  @include flex-col-content-center;
+  @include reset-button;
+
+  align-items: flex-end;
+  height: 100%;
+  margin-left: auto;
+  cursor: pointer;
+  row-gap: 0;
+
+  @include mobile-down {
+    align-items: flex-start;
+    margin-left: unset;
+  }
+}
+
+.Header__name {
+  @include text-caption-m-medium;
+
+  color: $color-text-primary;
+}
+
+.Header__email {
+  @include text-caption-s-regular;
+
+  color: $color-on-surface-dark-200;
+}

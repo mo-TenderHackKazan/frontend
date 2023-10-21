@@ -1,0 +1,52 @@
+@import 'src/app/styles/vars';
+
+.UserLayout {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.UserLayout__sidebar {
+  position: sticky;
+  z-index: $z-index-sidebar;
+  top: 0;
+  left: 0;
+  min-height: 100vh;
+
+  @include mobile-down {
+    position: fixed;
+  }
+}
+
+.UserLayout__main {
+  @include flex-col;
+  @include transition(max-width);
+
+  flex: 1;
+  width: 100%;
+  min-height: 100svh;
+
+  @include mobile-up {
+    max-width: calc(100% - 72px);
+
+    &.UserLayout__main_shrink {
+      max-width: calc(100% - 260px);
+    }
+  }
+}
+
+.UserLayout__header {
+  position: sticky;
+  z-index: $z-index-header;
+  top: 0;
+}
+
+.UserLayout__content {
+  @include flex-col;
+
+  flex: 1;
+}
+
+.UserLayout__footer {
+}

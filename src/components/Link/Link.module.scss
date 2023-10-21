@@ -50,6 +50,23 @@
   }
 }
 
+.Link_variant_primary {
+  color: $color-button-secondary-default-fill;
+
+  &.Link_hover:not(.Link_disabled),
+  &:hover:not(.Link_disabled, :active) {
+    color: $color-button-secondary-hover-fill;
+  }
+
+  &:active {
+    color: $color-button-secondary-pressed-fill;
+  }
+
+  &.Link_disabled {
+    color: $color-button-secondary-disabled-fill;
+  }
+}
+
 .Link_underlined {
   border-bottom: 1px solid currentcolor;
 }

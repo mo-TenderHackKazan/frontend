@@ -177,6 +177,12 @@
   align-items: center;
 }
 
+@mixin flex-col-content-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 @mixin text-overflow {
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -228,4 +234,8 @@ $scrollbar-width: 12px;
     padding-left: $spacing-small-x;
     padding-right: $spacing-small-x;
   }
+}
+
+@mixin reset-link {
+  all: unset;
 }
