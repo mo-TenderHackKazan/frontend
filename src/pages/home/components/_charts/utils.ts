@@ -17,12 +17,13 @@ export function randomColor() {
 // console.log(JSON.stringify(fromRange((x) => randomColor())));
 
 export const baseColors = [
-  'rgba(35,121,25,0.8)',
-  'rgba(30,129,33,0.9)',
   'rgba(79,17,97,0.4)',
-  'rgba(78,46,121,0.4)',
-  'rgba(114,104,2,0.5)',
+  'rgba(35,121,25,0.8)',
   'rgba(41,42,124,0.4)',
+  'rgba(128,23,33,0.8)',
+  'rgba(30,129,33,0.9)',
+  'rgba(114,104,2,0.5)',
+  'rgba(78,46,121,0.4)',
   'rgba(42,109,53,0.1)',
   'rgba(97,63,3,0.3)',
   'rgba(144,33,107,0.2)',
@@ -33,7 +34,6 @@ export const baseColors = [
   'rgba(76,35,98,0.2)',
   'rgba(27,120,7,0.5)',
   'rgba(93,91,8,1.0)',
-  'rgba(128,23,33,0.8)',
   'rgba(44,71,30,0.2)',
   'rgba(77,64,126,1.0)',
   'rgba(61,107,4,0.4)',

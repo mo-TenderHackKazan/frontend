@@ -9,17 +9,20 @@ import {
   LineElement,
   Title,
   Tooltip,
-  Legend
+  Legend,
+  ChartData
 } from 'chart.js';
 import { Line, Pie } from 'react-chartjs-2';
-import { faker } from '@faker-js/faker';
-import { baseColors, createFromRange, randomColor } from '../utils';
+import { useRef } from 'react';
+import { ChartJSOrUndefined } from 'react-chartjs-2/dist/types';
 
-export interface PieChartProps {
+export interface LineChartProps {
   /**
    * Дополнительный css-класс
    */
   className?: string;
+  data: ChartData<'line', number[], string>;
+  onClick?: (index: number) => void;
 }
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
@@ -29,7 +32,7 @@ export const options = {
   maintainAspectRatio: false,
   plugins: {
     legend: {
-      display: false,
+      // display: false,
       position: 'top' as const
     },
     title: {
@@ -38,30 +41,30 @@ export const options = {
   }
 };
 
-const length = 7;
+export const LineChart: ReactFCC<LineChartProps> = (props) => {
+  const { className, data, onClick } = props;
 
-const fromRange = createFromRange(length);
-
-const labels = fromRange((x) => `Label ${x + 1}`);
-
-export const data = {
-  labels,
-  datasets: [
-    {
-      label: `Last activity`,
-      data: labels.map(() => faker.datatype.number({ min: -1000, max: 1000 })),
-      borderColor: baseColors[5],
-      backgroundColor: baseColors[5]
-    }
-  ]
-};
-
-export const LineChart: ReactFCC<PieChartProps> = (props) => {
-  const { className } = props;
+  const chartRef = useRef<ChartJSOrUndefined<'line', number[], string> | null>(null);
 
   return (
     <div className={clsx(s.LineChart, className)}>
-      <Line options={options} data={data} />
+      <Line
+        onClick={(e) => {
+          const points = chartRef.current?.getElementsAtEventForMode(
+            e.nativeEvent,
+            'nearest',
+            { intersect: true },
+            true
+          );
+
+          if (points?.length) {
+            onClick?.(points[0].datasetIndex);
+          }
+        }}
+        ref={chartRef}
+        options={options}
+        data={data}
+      />
     </div>
   );
 };

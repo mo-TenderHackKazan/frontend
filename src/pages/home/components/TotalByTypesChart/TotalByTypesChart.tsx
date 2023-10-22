@@ -4,11 +4,12 @@ import { ReactFCC } from '../../../../utils/ReactFCC';
 import { DataLayout } from '../DataLayout';
 import { PieChart } from '../_charts';
 import { baseColors } from '../_charts/utils';
-import { useErrorsTypes } from '../../../../api/errors';
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { FilterInput } from '../FilterInput';
 import { useErrorsDate } from '../../../../api/errors/getErrorsDate';
 import { groupBy, sortBy } from 'lodash-es';
+import { Link, LinkVariant } from '../../../../components/Link';
+import format from 'date-fns/format';
 
 export interface TotalByTypesProps {
   /**
@@ -24,53 +25,79 @@ export const TotalByTypesChart: ReactFCC<TotalByTypesProps> = (props) => {
   const [dateLeft, setDateLeft] = useState<string>('');
   const [dateRight, setDateRight] = useState<string>('');
 
+  const [active, setActive] = useState<{ type: string; id: number; amount: number } | undefined>(undefined);
+
+  useEffect(() => {
+    setDate('');
+    setDateLeft('');
+    setDateRight('');
+  }, [active]);
+
   const { data: dateData } = useErrorsDate({
-    date: date ? new Date(date) : undefined,
-    date_range_after: dateLeft ? new Date(dateLeft) : undefined,
-    date_range_before: dateRight ? new Date(dateRight) : undefined
+    parent: active?.id ?? undefined,
+    date: date ? format(new Date(date), 'yyyy-MM-dd') : undefined,
+    date_range_after: dateLeft ? format(new Date(dateLeft), 'yyyy-MM-dd') : undefined,
+    date_range_before: dateRight ? format(new Date(dateRight), 'yyyy-MM-dd') : undefined
   });
 
-  const totalAmount = dateData ? dateData.reduce((acc, item) => acc + item.amount, 0) : undefined;
+  const entries = useMemo(() => {
+    const groups = groupBy(dateData, (v) => v.type);
+    return sortBy(
+      Object.entries(groups).map(([type, entries]) => ({
+        type,
+        id: entries[0].error_id,
+        has_children: entries[0].has_children,
+        amount: entries.reduce((acc, item) => acc + item.amount, 0)
+      })),
+      (i) => i.amount
+    );
+  }, [dateData]);
+
+  const totalAmount = entries.reduce((acc, item) => acc + item.amount, 0);
 
   const chartData = useMemo(() => {
     if (!dateData || dateData.length === 0) {
       return null;
     }
 
-    const groups = groupBy(dateData, (v) => v.type);
-    const typesAmounts = sortBy(
-      Object.entries(groups).map(([type, entries]) => ({
-        type,
-        amount: entries.reduce((acc, item) => acc + item.amount, 0)
-      })),
-      (i) => i.amount
-    );
-
-    const labels = typesAmounts.map((type) => type.type);
+    const labels = entries.map((type) => type.type);
 
     return {
       labels,
       datasets: [
         {
           label: 'Количество ошибок',
-          data: typesAmounts.map((entry) => entry.amount),
-          backgroundColor: baseColors.slice(3, typesAmounts.length),
-          borderColor: baseColors.slice(3, typesAmounts.length),
+          data: entries.map((entry) => entry.amount),
+          backgroundColor: baseColors.slice(0, entries.length),
+          borderColor: baseColors.slice(0, entries.length),
           borderWidth: 1
         }
       ]
     };
-  }, [dateData]);
+  }, [dateData, entries]);
 
   return (
     <DataLayout
       className={clsx(s.TotalByTypes, className)}
       classes={{ content: s.TotalByTypes__content }}
-      title={'Общие число ошибок по категориям'}
+      title={active ? `Количество ошибок по категории "${active.type}"` : 'Количество ошибок по категориям'}
       description={
         <>
-          Всего категорий: {chartData?.labels.length ?? '–'} <br />
-          Всего ошибок: {totalAmount ?? '–'}
+          {(!!active || !!date || !!dateLeft || !!dateRight) && (
+            <Link
+              className={s.TotalByTypes__reset}
+              variant={LinkVariant.SECONDARY}
+              onClick={() => {
+                setActive(undefined);
+                setDate('');
+                setDateLeft('');
+                setDateRight('');
+              }}>
+              Сбросить
+            </Link>
+          )}
+
+          <div>Всего ошибок: {totalAmount ?? '–'}</div>
         </>
       }
       headerContent={
@@ -90,7 +117,17 @@ export const TotalByTypesChart: ReactFCC<TotalByTypesProps> = (props) => {
           />
         </div>
       }>
-      {chartData && <PieChart className={s.TotalByTypes__chart} data={chartData} />}
+      {chartData && (
+        <PieChart
+          className={s.TotalByTypes__chart}
+          data={chartData}
+          onClick={(index) => {
+            if (entries[index].has_children) {
+              setActive(entries[index]);
+            }
+          }}
+        />
+      )}
     </DataLayout>
   );
 };

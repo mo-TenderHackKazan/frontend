@@ -6,21 +6,33 @@
 .TotalByTypes__content {
   @include flex-col;
   row-gap: $spacing-s;
+  min-height: 350px;
+
+  @include mobile-down {
+    min-height: 200px;
+  }
 }
 
 .TotalByTypes__chart {
-  flex: 1 0 300px;
-  height: 300px;
-  width: 300px;
+  flex: 1 0 400px;
+  height: 400px;
+  width: 100%;
+  max-width: 600px;
   align-self: center;
 
   @include mobile-down {
-    flex: 1 0 200px;
+    flex: 1 0 250px;
     height: 200px;
-    width: 200px;
+    max-width: 300px;
   }
 }
 
 .TotalByTypes__header {
   @include actions-row;
+}
+
+.TotalByTypes__reset {
+  font-size: $font-size-10 !important;
+  font-weight: $font-weight-600 !important;
+  line-height: 10px;
 }

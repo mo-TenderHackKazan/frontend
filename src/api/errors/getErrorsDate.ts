@@ -9,13 +9,16 @@ export type GetErrorsDateResponse = {
   date: string;
   type: string;
   amount: number;
+  error_id: number;
+  has_children: number;
 }[];
 
 export type GetErrorsDateInput = {
-  date?: Date;
-  date_range_after?: Date;
-  date_range_before?: Date;
+  date?: string;
+  date_range_after?: string;
+  date_range_before?: string;
   error?: number;
+  parent?: number;
 };
 
 export const getErrorsDate = (params: GetErrorsDateInput): Promise<GetErrorsDateResponse> => {
