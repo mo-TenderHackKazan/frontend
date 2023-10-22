@@ -19,10 +19,11 @@ export interface ResolveModalProps {
   isOpen: boolean;
   onClose: () => void;
   typeId?: number;
+  allowEditDesc?: boolean;
 }
 
 export const ResolveModal: ReactFCC<ResolveModalProps> = (props) => {
-  const { className, isOpen, onClose, typeId } = props;
+  const { className, isOpen, onClose, typeId, allowEditDesc } = props;
 
   const [description, setDescription] = useState('');
   const [checked, setChecked] = useState(false);
@@ -52,13 +53,11 @@ export const ResolveModal: ReactFCC<ResolveModalProps> = (props) => {
 
     mutate({
       id: typeId,
-      error_description: description,
+      error_description: allowEditDesc ? description : undefined,
       resolved: checked,
       solutions
     });
   };
-
-  console.log(solutions);
 
   return (
     <ModalContainer className={clsx(s.ResolveModal, className)} isOpen={isOpen} onClose={onClose}>
@@ -69,9 +68,14 @@ export const ResolveModal: ReactFCC<ResolveModalProps> = (props) => {
 
             <Input placeholder={'Название'} value={data.name} disabled />
 
-            <Textarea placeholder={'Описание'} value={description} onChange={(e) => setDescription(e.target.value)} />
+            <Textarea
+              placeholder={'Описание'}
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              disabled={!allowEditDesc}
+            />
 
-            <Text className={s.ResolveModal__label} variant={ETextVariants.BODY_S_REGULAR}>
+            <Text className={s.ResolveModal__label} variant={ETextVariants.BODY_M_MEDIUM}>
               Решения
             </Text>
 

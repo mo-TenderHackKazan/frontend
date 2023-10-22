@@ -16,6 +16,7 @@ export type GetErrorsInput = {
   page_size: number;
   pageParam?: number;
   type?: number;
+  reversed?: true;
 };
 
 export const getErrors = ({ pageParam = 1, ...params }: GetErrorsInput): Promise<GetErrorsResponse> => {

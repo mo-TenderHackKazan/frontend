@@ -5,13 +5,18 @@ import { Heading, HeadingSize } from '../../components/Heading';
 import format from 'date-fns/format';
 import { useErrors } from '../../api/errors/getErrors';
 import { InfiniteScroll } from '../../components/InfiniteScroll';
-import { useErrorsTypes } from '../../api/errors';
 import { ETextVariants, Text } from '../../components/Text';
 import { URL_KEY_TYPE } from '../../app/routes/urlKeys';
 import { useEffect, useState } from 'react';
 import { useQueryParam } from '../../hooks/useQueryParam';
 import { ModalBody, ModalContainer } from '../../components/Modal';
 import { CrmError } from '../../api/errors/types';
+import { FilterSelect } from '../home/components/FilterSelect';
+
+enum SortVariant {
+  date_asc = 'amount_asc',
+  date_desc = 'amount_desc'
+}
 
 export interface LogPageProps {
   /**
@@ -23,16 +28,17 @@ export interface LogPageProps {
 export const LogPage: ReactFCC<LogPageProps> = (props) => {
   const { className } = props;
 
+  const [sortVariant, setSortVariant] = useState(SortVariant.date_asc);
+
   const [typeId] = useQueryParam(URL_KEY_TYPE);
 
   const [isOpen, setIsOpen] = useState(false);
   const [activeError, setActiveError] = useState<CrmError | null>(null);
 
-  useErrorsTypes({});
-
   const { data, fetchNextPage, hasNextPage, refetch } = useErrors({
     page_size: 100,
-    type: typeId ? Number(typeId) : undefined
+    type: typeId ? Number(typeId) : undefined,
+    reversed: sortVariant === SortVariant.date_asc ? true : undefined
   });
 
   useEffect(() => {
@@ -66,7 +72,16 @@ export const LogPage: ReactFCC<LogPageProps> = (props) => {
 
       <InfiniteScroll className={s.LogPage__table} fetchMore={fetchNextPage} hasMore={!!hasNextPage} scrollOffset={100}>
         <div className={s.LogPage__header}>
-          <div className={s.LogPage__headerItem}>Информация об ошибке</div>
+          <div className={s.TypesTable__headerActions}>
+            <FilterSelect
+              className={s.TypesTable__sortFilter}
+              label={'Сортировка'}
+              value={sortVariant}
+              onChange={(e) => setSortVariant(e.target.value as SortVariant)}>
+              <option value={SortVariant.date_asc}>По дате ↑</option>
+              <option value={SortVariant.date_desc}>По дате ↓</option>
+            </FilterSelect>
+          </div>
           <div className={s.LogPage__headerItem}>Дата</div>
         </div>
 
