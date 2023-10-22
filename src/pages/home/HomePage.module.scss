@@ -1,5 +1,37 @@
 @import 'src/app/styles/vars';
 
 .HomePage {
+  @include flex-col;
+  padding: $spacing-xm;
+  row-gap: $spacing-2xm;
+}
 
+.HomePage__overviewData {
+  padding: $spacing-s $spacing-2xm !important;
+}
+
+.HomePage__overviewTitle {
+  margin-bottom: $spacing-s;
+}
+
+.HomePage__row {
+  @include flex;
+  column-gap: $spacing-2xm;
+  align-items: stretch;
+
+  > * {
+    flex: 1;
+  }
+}
+
+.HomePage__row_half_one {
+  > * {
+    &:first-child {
+      flex: 1;
+    }
+
+    &:last-child {
+      flex: 2;
+    }
+  }
 }

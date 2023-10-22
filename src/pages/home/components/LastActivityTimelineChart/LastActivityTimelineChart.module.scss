@@ -1,0 +1,9 @@
+@import 'src/app/styles/vars';
+
+.LastActivityTimelineChart {
+  width: 100%;
+}
+
+.LastActivityTimelineChart__header {
+  @include actions-row;
+}

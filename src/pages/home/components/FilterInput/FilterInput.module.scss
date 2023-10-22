@@ -1,0 +1,17 @@
+@import 'src/app/styles/vars';
+
+.FilterInput {
+  @include flex-col;
+  //gap: $spacing-3xs;
+}
+
+.FilterInput__input {
+  width: fit-content;
+  min-height: 26px !important;
+  padding: 0 8px !important;
+}
+
+.FilterInput__label {
+  @include text-caption-m-regular;
+  font-size: $font-size-12;
+}

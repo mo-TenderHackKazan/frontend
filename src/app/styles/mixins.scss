@@ -239,3 +239,9 @@ $scrollbar-width: 12px;
 @mixin reset-link {
   all: unset;
 }
+
+@mixin actions-row {
+  @include flex-middle;
+  flex-wrap: wrap;
+  gap: $spacing-2xs;
+}

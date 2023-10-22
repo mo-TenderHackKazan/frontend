@@ -34,38 +34,38 @@
 }
 
 .Link_variant_primary {
-  color: $color-brand-primary;
+  color: $color-accent-blue-200;
 
   &.Link_hover:not(.Link_disabled),
   &:hover:not(.Link_disabled, :active) {
-    color: $color-brand-hover;
+    color: darken($color-accent-blue-200, 10%);
   }
 
   &:active {
-    color: $color-brand-active;
+    color: darken($color-accent-blue-200, 15%);
   }
 
   &.Link_disabled {
     color: $color-brand-disabled;
   }
 }
-
-.Link_variant_primary {
-  color: $color-button-secondary-default-fill;
-
-  &.Link_hover:not(.Link_disabled),
-  &:hover:not(.Link_disabled, :active) {
-    color: $color-button-secondary-hover-fill;
-  }
-
-  &:active {
-    color: $color-button-secondary-pressed-fill;
-  }
-
-  &.Link_disabled {
-    color: $color-button-secondary-disabled-fill;
-  }
-}
+//
+//.Link_variant_primary {
+//  color: $color-button-secondary-default-fill;
+//
+//  &.Link_hover:not(.Link_disabled),
+//  &:hover:not(.Link_disabled, :active) {
+//    color: $color-button-secondary-hover-fill;
+//  }
+//
+//  &:active {
+//    color: $color-button-secondary-pressed-fill;
+//  }
+//
+//  &.Link_disabled {
+//    color: $color-button-secondary-disabled-fill;
+//  }
+//}
 
 .Link_underlined {
   border-bottom: 1px solid currentcolor;

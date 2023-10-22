@@ -1,24 +1,27 @@
 @import 'src/app/styles/vars';
 
 .Input {
-  @include text-body-m-regular;
+  @include text-body-s-regular;
   @include transition(border-color, box-shadow);
 
   position: relative;
   display: flex;
   align-items: center;
-  height: 40px;
+  min-height: 40px;
   padding: 0 $spacing-small-x;
-  color: $color-text-primary;
+  color: rgb(62, 52, 70);
   overflow: hidden;
-  border: 1px solid transparent;
+  font-size: $font-size-12;
+  font-weight: $font-weight-600;
+  //border: 1px solid transparent;
   border-radius: $radius-small;
-  background-color: $color-on-surface-dark-400;
+  background-color: $color-background-primary;
+  border: 1px solid $color-divider-dark;
   cursor: text;
   box-sizing: border-box;
 
   &:hover {
-    box-shadow: $shadow-hover;
+    border-color: $color-system-link-hover;
   }
 }
 
@@ -27,7 +30,7 @@
 }
 
 .Input_focus {
-  border-color: $color-brand-primary;
+  border-color: $color-system-link-hover;
 }
 
 .Input_disabled {

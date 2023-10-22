@@ -21,15 +21,11 @@ export interface SidebarProps {
 const menu: SidebarItemProps[] = [
   {
     to: '/',
-    children: 'Главная'
+    children: 'Администрирование'
   },
   {
-    to: '/123',
-    children: 'Главная'
-  },
-  {
-    to: '/123456',
-    children: 'Главная'
+    to: '/manage',
+    children: 'Менеджмент'
   }
 ];
 

@@ -37,6 +37,7 @@ $color-light-system-warning-40: #fecc9a;
 $color-background-primary: $color-background;
 $color-background-secondary: $color-secondary;
 $color-background-tertiary: lighten(invert($color-background), 20%);
+$color-background-quaternary: rgb(250, 249, 251);
 $color-background-dark-100: darken($color-background, 3%);
 $color-background-dark-200: darken($color-background, 6%);
 $color-background-dark-300: darken($color-background, 12%);

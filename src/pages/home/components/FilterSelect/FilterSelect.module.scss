@@ -1,0 +1,73 @@
+@import 'src/app/styles/vars';
+
+.FilterSelect__container {
+  @include flex-col;
+}
+
+.FilterSelect {
+  @include text-body-s-regular;
+  @include transition(border-color, background-color);
+
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 26px;
+  width: fit-content;
+  min-width: 100px;
+  max-width: 150px;
+  padding: 0 $spacing-2xs;
+  color: rgb(62, 52, 70);
+  overflow: hidden;
+  font-size: $font-size-12;
+  font-weight: $font-weight-600;
+  //border: 1px solid transparent;
+  border-radius: $radius-small;
+  background-color: $color-background-primary;
+  border: 1px solid $color-divider-dark;
+  box-sizing: border-box;
+  cursor: pointer;
+
+  &:hover {
+    //box-shadow: $shadow-hover;
+    background-color: $color-background-secondary;
+  }
+}
+
+.FilterSelect__select {
+  @include reset-default-input;
+  @include remove-autofill-style;
+
+  position: relative;
+  flex-grow: 1;
+  min-width: 0;
+  height: 100%;
+  cursor: pointer;
+  padding-right: 15px;
+  -webkit-padding-end: 15px;
+
+  &:placeholder-shown + .Input__clear {
+    display: none;
+  }
+
+  &[type='number'] {
+    appearance: textfield;
+  }
+
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    appearance: none;
+  }
+
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus,
+  &:-webkit-autofill:active {
+    caret-color: $color-text-primary;
+    -webkit-text-fill-color: $color-text-primary;
+  }
+}
+
+.FilterInput__label {
+  @include text-caption-m-regular;
+  font-size: $font-size-12;
+}

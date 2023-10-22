@@ -1,0 +1,36 @@
+@import 'src/app/styles/vars';
+
+.DataLayout {
+  border: 1px solid $color-background-secondary;
+  border-radius: $radius-small;
+}
+
+.DataLayout__header {
+  padding: $spacing-2xs $spacing-s;
+  border-radius: $radius-small $radius-small 0 0;
+  background-color: $color-background-quaternary;
+  border-bottom: 1px solid $color-background-secondary;
+}
+
+.DataLayout__inner {
+  padding: $spacing-s $spacing-s;
+}
+
+.DataLayout__heading {
+}
+
+.DataLayout__description {
+  margin-bottom: $spacing-s;
+  color: $color-text-secondary;
+}
+
+.DataLayout__bigNumber {
+  font-size: $font-size-32 !important;
+}
+
+.DataLayout__content {
+  //@include flex-center;
+  > * {
+    flex: 1;
+  }
+}

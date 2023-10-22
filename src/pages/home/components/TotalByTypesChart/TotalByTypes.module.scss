@@ -1,0 +1,26 @@
+@import 'src/app/styles/vars';
+
+.TotalByTypes {
+}
+
+.TotalByTypes__content {
+  @include flex-col;
+  row-gap: $spacing-s;
+}
+
+.TotalByTypes__chart {
+  flex: 1 0 300px;
+  height: 300px;
+  width: 300px;
+  align-self: center;
+
+  @include mobile-down {
+    flex: 1 0 200px;
+    height: 200px;
+    width: 200px;
+  }
+}
+
+.TotalByTypes__header {
+  @include actions-row;
+}

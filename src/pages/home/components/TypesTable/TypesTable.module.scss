@@ -1,0 +1,84 @@
+@import 'src/app/styles/vars';
+
+@mixin types-table-grid {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 70% 15% auto;
+  column-gap: $spacing-2xs;
+}
+
+.TypesTable__heading {
+  margin-bottom: $spacing-2xs;
+}
+
+.TypesTable {
+  border: 1px solid $color-background-secondary;
+  border-radius: $radius-small;
+}
+
+.TypesTable__header {
+  @include types-table-grid;
+  padding: $spacing-2xs $spacing-s;
+  border-radius: $radius-small $radius-small 0 0;
+  background-color: $color-background-quaternary;
+  border-bottom: 1px solid $color-background-secondary;
+}
+
+.TypesTable__headerActions {
+  @include actions-row;
+}
+
+.TypesTable__headerItem {
+  @include text-body-s-regular;
+  font-weight: $font-weight-600;
+  justify-self: end;
+  padding-right: $spacing-s;
+}
+
+.TypesTable__row {
+  @include types-table-grid;
+  padding: $spacing-2xs $spacing-s;
+  border-bottom: 1px solid $color-background-secondary;
+}
+
+.TypesTable__rowMain {
+  @include flex-col;
+  overflow-x: hidden;
+}
+
+.TypesTable__name {
+  text-align: left;
+  width: fit-content;
+  font-weight: $font-weight-600;
+}
+
+.TypesTable__rowMainText {
+  @include text-caption-m-regular;
+  color: $color-text-primary;
+  overflow-x: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  padding-right: $spacing-xm;
+}
+
+.TypesTable__date {
+  @include flex-middle;
+  column-gap: 4px;
+  color: $color-text-secondary;
+
+  span {
+    font-size: $font-size-12;
+    font-weight: $font-weight-600;
+  }
+}
+
+.TypesTable__check {
+  width: 16px;
+  height: 16px;
+  color: $color-text-tertiary;
+}
+
+.TypesTable__rowItem {
+  justify-self: end;
+  padding-right: $spacing-s;
+}
