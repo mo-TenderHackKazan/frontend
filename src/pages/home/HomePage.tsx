@@ -2,10 +2,9 @@ import clsx from 'clsx';
 import s from './HomePage.module.scss';
 import { ReactFCC } from '../../utils/ReactFCC';
 import { DataLayout, LastActivityTimelineChart, TotalByTypesChart } from './components';
-import { useErrorsTypes } from '../../api/errors';
-import { useMemo } from 'react';
 import { useErrorsToday } from '../../api/errors/getErrorsToday';
 import { TypesTable } from './components/TypesTable';
+import { useErrorsAllTime } from '../../api/errors/getErrorsAllTime';
 
 export interface HomePageProps {
   /**
@@ -17,16 +16,8 @@ export interface HomePageProps {
 export const HomePage: ReactFCC<HomePageProps> = (props) => {
   const { className } = props;
 
-  const { data: errorsTypesData } = useErrorsTypes({});
+  const { data: errorsAllTimeData } = useErrorsAllTime({});
   const { data: errorsTodayData } = useErrorsToday({});
-
-  const totalErrors = useMemo(
-    () =>
-      errorsTypesData?.reduce((acc, item) => {
-        return acc + item.amount;
-      }, 0) ?? 0,
-    [errorsTypesData]
-  );
 
   return (
     <div className={clsx(s.HomePage, className)}>
@@ -34,7 +25,7 @@ export const HomePage: ReactFCC<HomePageProps> = (props) => {
         <DataLayout
           classes={{ inner: s.HomePage__overviewData, title: s.HomePage__overviewTitle }}
           title={'Ошибок всего'}
-          bigNumber={totalErrors}
+          bigNumber={errorsAllTimeData?.amount ?? 0}
         />
         <DataLayout
           classes={{ inner: s.HomePage__overviewData, title: s.HomePage__overviewTitle }}
