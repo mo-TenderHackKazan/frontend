@@ -8,7 +8,7 @@ $border-width: 2px;
   @include flex-center;
   @include transition(background-color, color);
 
-  padding: $spacing-xs - $border-width;
+  padding: $spacing-3xs - $border-width $spacing-xs - $border-width;
   color: $color-text-secondary;
   border: 2px solid transparent;
   //border-radius: $spacing-s;

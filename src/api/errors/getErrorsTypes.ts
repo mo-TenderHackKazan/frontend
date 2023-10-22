@@ -4,6 +4,7 @@ import { ExtractFnReturnType, QueryConfig } from '../../lib/react-query';
 import { ErrorTypeResponse } from './types';
 import { ERRORS_TYPES_URL } from './urlKeys';
 import { QUERY_KEY_ERRORS_TYPES } from './queryKeys';
+import { flatErrorTree } from './utils/flatErrorTree';
 
 export type GetErrorsTypesResponse = ErrorTypeResponse[];
 
@@ -25,4 +26,14 @@ export const useErrorsTypes = ({ config }: UseErrorsTypesOptions) => {
       return await getErrorsTypes();
     }
   });
+};
+
+export const useFlattenErrorTypes = ({ config }: UseErrorsTypesOptions) => {
+  const { data: typesData, ...queryResult } = useErrorsTypes({ config });
+  const data = flatErrorTree(typesData || []);
+
+  return {
+    data,
+    ...queryResult
+  };
 };

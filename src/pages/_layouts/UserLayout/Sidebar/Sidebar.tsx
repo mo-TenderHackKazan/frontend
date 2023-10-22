@@ -24,6 +24,10 @@ const menu: SidebarItemProps[] = [
     children: 'Администрирование'
   },
   {
+    to: '/logs',
+    children: 'Журнал ошибок'
+  },
+  {
     to: '/manage',
     children: 'Менеджмент'
   }

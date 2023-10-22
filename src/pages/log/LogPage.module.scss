@@ -1,0 +1,131 @@
+@import 'src/app/styles/vars';
+
+@mixin types-table-grid {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr minmax(70px, max-content);
+  column-gap: $spacing-2xs;
+}
+
+.LogPage {
+  @include flex-col;
+  height: calc(100vh - $header-height);
+  padding: $spacing-xm;
+}
+
+.LogPage__heading {
+  margin-bottom: $spacing-3xs;
+}
+
+.LogPage__text {
+  margin-bottom: $spacing-s;
+}
+
+.LogPage__table {
+  border: 1px solid $color-background-secondary;
+  border-radius: $radius-small;
+  height: 100%;
+  overflow-y: scroll;
+}
+
+.LogPage__header {
+  @include types-table-grid;
+  position: sticky;
+  top: 0;
+  padding: $spacing-2xs $spacing-s;
+  border-radius: $radius-small $radius-small 0 0;
+  background-color: $color-background-quaternary;
+  border-bottom: 1px solid $color-background-secondary;
+}
+
+.LogPage__headerActions {
+  @include actions-row;
+}
+
+.LogPage__headerItem {
+  @include text-body-s-regular;
+  font-weight: $font-weight-600;
+
+  &:last-of-type {
+    justify-self: end;
+  }
+}
+
+.LogPage__row {
+  @include transition(background-color);
+
+  @include types-table-grid;
+  grid-template-columns: 20% 20% 1fr minmax(70px, max-content);
+  padding: $spacing-2xs $spacing-s;
+  border-bottom: 1px solid $color-background-secondary;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $color-background-secondary;
+  }
+}
+
+.LogPage__rowMain {
+  @include flex-col;
+  overflow-x: hidden;
+}
+
+.LogPage__name {
+  text-align: left;
+  width: fit-content;
+  font-weight: $font-weight-600;
+}
+
+.LogPage__rowMainText {
+  @include text-caption-m-regular;
+  color: $color-text-primary;
+  overflow-x: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  padding-right: $spacing-xm;
+}
+
+.LogPage__date {
+  @include flex-middle;
+  column-gap: 4px;
+  color: $color-text-secondary;
+
+  span {
+    font-size: $font-size-12;
+    font-weight: $font-weight-600;
+  }
+}
+
+.LogPage__check {
+  width: 16px;
+  height: 16px;
+  color: $color-text-tertiary;
+}
+
+.LogPage__rowItem {
+  font-size: $font-size-12;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow-x: hidden;
+
+  &:last-of-type {
+    justify-self: end;
+  }
+}
+
+.LogPage__rowItem_indicated {
+  font-weight: $font-weight-600;
+}
+
+.LogPage__modalTitle {
+  @include text-body-m-medium;
+  margin-bottom: $spacing-3xs;
+}
+
+.LogPage__modalValue {
+  @include text-body-s-regular;
+
+  &:not(:last-child) {
+    margin-bottom: $spacing-s;
+  }
+}

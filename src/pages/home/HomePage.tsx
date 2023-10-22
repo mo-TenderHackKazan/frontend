@@ -6,6 +6,7 @@ import { useErrorsTypes } from '../../api/errors';
 import { useMemo } from 'react';
 import { useErrorsToday } from '../../api/errors/getErrorsToday';
 import { TypesTable } from './components/TypesTable';
+import { ModalBody, ModalContainer } from '../../components/Modal';
 
 export interface HomePageProps {
   /**
@@ -43,14 +44,11 @@ export const HomePage: ReactFCC<HomePageProps> = (props) => {
         />
       </div>
 
-      <div className={clsx(s.HomePage__row, s.HomePage__row_half_one)}>
-        <TotalByTypesChart />
-      </div>
-
       <LastActivityTimelineChart />
 
+      <TotalByTypesChart />
+
       <TypesTable />
-      {/*<TimelineChart />*/}
     </div>
   );
 };

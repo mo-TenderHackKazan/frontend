@@ -84,20 +84,22 @@ export const TotalByTypesChart: ReactFCC<TotalByTypesProps> = (props) => {
       description={
         <>
           {(!!active || !!date || !!dateLeft || !!dateRight) && (
-            <Link
-              className={s.TotalByTypes__reset}
-              variant={LinkVariant.SECONDARY}
-              onClick={() => {
-                setActive(undefined);
-                setDate('');
-                setDateLeft('');
-                setDateRight('');
-              }}>
-              Сбросить
-            </Link>
+            <>
+              <Link
+                className={s.TotalByTypes__reset}
+                variant={LinkVariant.SECONDARY}
+                onClick={() => {
+                  setActive(undefined);
+                  setDate('');
+                  setDateLeft('');
+                  setDateRight('');
+                }}>
+                Сбросить
+              </Link>
+              <br />
+            </>
           )}
-
-          <div>Всего ошибок: {totalAmount ?? '–'}</div>
+          <span>Всего ошибок: {totalAmount ?? '–'}</span>
         </>
       }
       headerContent={

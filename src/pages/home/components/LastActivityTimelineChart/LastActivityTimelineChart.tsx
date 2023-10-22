@@ -105,16 +105,19 @@ export const LastActivityTimelineChart: ReactFCC<LastActivityTimelineChartProps>
       description={
         <>
           {!!active && (
-            <Link
-              className={s.LastActivityTimelineChart__reset}
-              variant={LinkVariant.SECONDARY}
-              onClick={() => {
-                setActive(undefined);
-              }}>
-              Сбросить
-            </Link>
+            <>
+              <Link
+                className={s.LastActivityTimelineChart__reset}
+                variant={LinkVariant.SECONDARY}
+                onClick={() => {
+                  setActive(undefined);
+                }}>
+                Сбросить
+              </Link>
+              <br />
+            </>
           )}
-          <div>Всего ошибок: {totalAmount}</div>
+          <span>Всего ошибок: {totalAmount}</span>
         </>
       }
       headerContent={

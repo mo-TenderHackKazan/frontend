@@ -11,10 +11,10 @@
   width: 600px;
   max-height: calc(100vh - $spacing-medium-x * 2);
   background: $color-background-primary;
-  padding: $spacing-small;
+  padding: $spacing-small-x;
 
   &_borderRadius {
-    border-radius: $radius-medium;
+    border-radius: $radius-small;
   }
 
   @include media-down(tablet-small) {

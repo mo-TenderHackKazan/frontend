@@ -1,3 +1,5 @@
+import { LOG_PAGE_ROUTE } from './routes';
+
 export class PathBuilder {
-  // static getChatPath = (id: string) => CHAT_PAGE_ROUTE.replace(`:${CHAT_PAGE_PARAM}`, String(id));
+  static getErrorsLogByType = (typeId: number) => `${LOG_PAGE_ROUTE}?type=${typeId}`;
 }

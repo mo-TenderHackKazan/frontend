@@ -7,6 +7,8 @@ export interface UseUrlParamOptions<T> {
 
 export const useUrlParam = <T = string | null>(key: string, options: UseUrlParamOptions<T> = {}) => {
   const { [key]: param } = useParams();
+  const dsd = useParams();
+  console.log(key, dsd);
 
   const value = useMemo(() => {
     if (param === undefined) {
