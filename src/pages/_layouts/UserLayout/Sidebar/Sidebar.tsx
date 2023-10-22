@@ -5,6 +5,7 @@ import { ReactFCC } from '../../../../utils/ReactFCC';
 import { useIsMobile } from '../../../../hooks/useIsMobile';
 import { SidebarItem, SidebarItemProps } from './SidebarItem';
 import portalLogoSrc from './assets/portal-logo.svg';
+import { ReactComponent as CancelIcon } from '../Header/assets/cancel.svg';
 import s from './Sidebar.module.scss';
 
 export interface SidebarProps {
@@ -16,6 +17,10 @@ export interface SidebarProps {
    * Состояние открытости сайдбара
    */
   isOpen: boolean;
+  /**
+   * Сеттер состояния открытости сайдбара
+   */
+  setOpen: (open: boolean) => void;
 }
 
 const menu: SidebarItemProps[] = [
@@ -31,15 +36,20 @@ const menu: SidebarItemProps[] = [
     to: '/manage',
     children: 'Пользовательские ошибки'
   }
+  // {
+  //   to: '/notify',
+  //   children: 'Уведомление пользователя'
+  // }
 ];
 
 export const Sidebar: ReactFCC<SidebarProps> = (props) => {
-  const { className, isOpen } = props;
+  const { className, isOpen, setOpen } = props;
 
   const isMobile = useIsMobile();
 
   const onClickLink = () => {
     if (isMobile) {
+      setOpen(false);
     }
   };
 
@@ -61,16 +71,7 @@ export const Sidebar: ReactFCC<SidebarProps> = (props) => {
                 [s.Sidebar__header_open]: openState
               })}>
               <img className={clsx(s.Header__logo)} src={portalLogoSrc} alt={''} />
-              {/*<Logo className={s.Sidebar__logo} shrink={!openState} small />*/}
-              {/*<Button*/}
-              {/*  classes={{*/}
-              {/*    icon: s.Sidebar__toggleIcon*/}
-              {/*  }}*/}
-              {/*  variant={ButtonVariant.tertiary}*/}
-              {/*  size={ButtonSize.small}*/}
-              {/*  onClick={() => setOpen(!isOpen)}>*/}
-              {/*  Открыть*/}
-              {/*</Button>*/}
+              {isMobile && <CancelIcon className={s.Sidebar__toggleIcon} onClick={() => setOpen(!isOpen)} />}
             </div>
 
             <div className={s.Sidebar__menu}>

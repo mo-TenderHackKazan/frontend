@@ -6,7 +6,6 @@ import { useErrorsTypes } from '../../api/errors';
 import { useMemo } from 'react';
 import { useErrorsToday } from '../../api/errors/getErrorsToday';
 import { TypesTable } from './components/TypesTable';
-import { ModalBody, ModalContainer } from '../../components/Modal';
 
 export interface HomePageProps {
   /**

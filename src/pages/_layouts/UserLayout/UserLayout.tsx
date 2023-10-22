@@ -8,7 +8,6 @@ import { useIsMobile } from '../../../hooks/useIsMobile';
 import { Sidebar } from './Sidebar';
 import { Header } from './Header';
 import s from './UserLayout.module.scss';
-import { Footer } from './Footer';
 
 export interface UserLayoutProps {
   /**
@@ -24,14 +23,32 @@ export interface UserLayoutProps {
 export const UserLayout: ReactFCC<UserLayoutProps> = (props) => {
   const { className, header } = props;
 
+  const isDesktop = useIsDesktop();
   const isMobile = useIsMobile();
+
+  const [isOpenSidebar, { set, change }] = useToggle(isDesktop);
+
+  useEffect(() => {
+    if (isMobile) {
+      change(false);
+    }
+
+    if (isDesktop) {
+      change(true);
+    }
+  }, [change, isMobile, isDesktop]);
+
+  const isOpen = isOpenSidebar || isDesktop;
+  console.log(isOpen);
 
   return (
     <div className={clsx(s.UserLayout, className)}>
-      <Sidebar className={s.UserLayout__sidebar} isOpen={!isMobile} />
+      <Sidebar className={s.UserLayout__sidebar} isOpen={isOpen} setOpen={change} />
 
-      <div className={clsx(s.UserLayout__main, !isMobile && s.UserLayout__main_shrink)}>
-        <Header className={s.UserLayout__header}>{header}</Header>
+      <div className={clsx(s.UserLayout__main, isOpen && s.UserLayout__main_shrink)}>
+        <Header className={s.UserLayout__header} onOpenSidebar={set}>
+          {header}
+        </Header>
 
         <div className={s.UserLayout__content}>
           <Outlet />

@@ -12,7 +12,7 @@ import {
   Legend,
   ChartData
 } from 'chart.js';
-import { Line, Pie } from 'react-chartjs-2';
+import { Line } from 'react-chartjs-2';
 import { useRef } from 'react';
 import { ChartJSOrUndefined } from 'react-chartjs-2/dist/types';
 

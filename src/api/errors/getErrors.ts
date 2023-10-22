@@ -1,4 +1,4 @@
-import { useInfiniteQuery, useQuery } from '@tanstack/react-query';
+import { useInfiniteQuery } from '@tanstack/react-query';
 import { axios } from '../../lib/axios';
 import { ExtractFnReturnType, QueryConfig } from '../../lib/react-query';
 import { CrmError } from './types';
@@ -40,7 +40,7 @@ export const useErrors = ({ config, ...params }: UseErrorsOptions) => {
     queryFn: async () => {
       return await getErrors(params);
     },
-    getNextPageParam: (lastPage, allPages) => {
+    getNextPageParam: (lastPage) => {
       if (!lastPage.next) {
         return;
       }

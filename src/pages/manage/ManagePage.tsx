@@ -97,7 +97,7 @@ export const ManagePage: ReactFCC<ManagePageProps> = (props) => {
       </div>
 
       <div className={s.ManagePage__list}>
-        {sortedData.map((item) => (
+        {sortedData.map((item, index) => (
           <Card
             id={item.type.id}
             name={item.name}
@@ -106,6 +106,7 @@ export const ManagePage: ReactFCC<ManagePageProps> = (props) => {
             amount={item.amount}
             resolved={item.type.resolved}
             onClick={() => setActive(item.type.id)}
+            key={index}
           />
         ))}
       </div>

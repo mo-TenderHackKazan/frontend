@@ -1,3 +1,3 @@
-import {mediaQuery, useMediaQueryResult} from './useMediaQueryResult';
+import { mediaQuery, useMediaQueryResult } from './useMediaQueryResult';
 
-export const useIsDesktop = () => useMediaQueryResult(mediaQuery.tabletSmallDown);
+export const useIsDesktop = () => useMediaQueryResult(mediaQuery.tabletSmallUp);

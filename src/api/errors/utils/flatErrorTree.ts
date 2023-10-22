@@ -3,9 +3,9 @@ import { uniqBy } from 'lodash-es';
 
 export function flatErrorTree(errors: ErrorTypeResponse[]) {
   const results: ErrorTypeResponse[] = [];
-  errors.map((validationOrIntegrationErrorType) => {
-    validationOrIntegrationErrorType.children.map((dbOrSystemErrorType) => {
-      dbOrSystemErrorType.children.map((errorType) => {
+  errors.forEach((validationOrIntegrationErrorType) => {
+    validationOrIntegrationErrorType.children.forEach((dbOrSystemErrorType) => {
+      dbOrSystemErrorType.children.forEach((errorType) => {
         results.push({
           ...errorType,
           name: `${validationOrIntegrationErrorType.name} / ${dbOrSystemErrorType.name} / ${errorType.name}`

@@ -90,7 +90,7 @@ export const LastActivityTimelineChart: ReactFCC<LastActivityTimelineChartProps>
       labels,
       datasets
     };
-  }, [dateData, groups]);
+  }, [dateData, groups, dateRange]);
 
   const totalAmount = chartData?.datasets
     .flatMap((i) => i.data)

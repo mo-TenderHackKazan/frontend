@@ -1,0 +1,20 @@
+@import 'src/app/styles/vars';
+
+.Notify {
+  padding: $spacing-xm;
+}
+
+.Notify__heading {
+  margin-bottom: $spacing-2xm;
+}
+
+.Notify__content {
+  @include flex-col;
+  gap: $spacing-s;
+  max-width: 500px;
+}
+
+.Notify__radios {
+  @include flex-col;
+  gap: $spacing-3xs;
+}

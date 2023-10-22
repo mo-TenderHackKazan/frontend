@@ -1,9 +1,9 @@
-import { useInfiniteQuery, useQuery } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 import { axios } from '../../lib/axios';
 import { ExtractFnReturnType, QueryConfig } from '../../lib/react-query';
-import { CrmError, DetailedErrorType } from './types';
-import { ERRORS_TYPES_URL, ERRORS_URL } from './urlKeys';
-import { QUERY_KEY_ERROR, QUERY_KEY_ERRORS_DATE } from './queryKeys';
+import { DetailedErrorType } from './types';
+import { ERRORS_TYPES_URL } from './urlKeys';
+import { QUERY_KEY_ERROR } from './queryKeys';
 
 export type GetErrorTypeInput = {
   id: number;

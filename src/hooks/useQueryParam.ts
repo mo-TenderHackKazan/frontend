@@ -18,7 +18,8 @@ export const useQueryParam = <T = string | null>(
 
   useEffect(() => {
     setParamState(searchParams.get(key) || transformedDefaultValue);
-  }, [searchParams]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchParams, key]);
 
   const value = useMemo(() => {
     if (getter) {

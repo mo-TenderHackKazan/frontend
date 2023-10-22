@@ -10,6 +10,8 @@ import { Button, ButtonSize, ButtonVariant } from '../../../components/Button';
 import { Checkbox } from '../../../components/Checkbox';
 import { useEffect, useState } from 'react';
 import { useUpdateErrorType } from '../../../api/errors/updateErrorType';
+import { Link as RouterLink } from 'react-router-dom';
+import { PathBuilder } from '../../../app/routes';
 
 export interface ResolveModalProps {
   /**
@@ -55,7 +57,7 @@ export const ResolveModal: ReactFCC<ResolveModalProps> = (props) => {
       id: typeId,
       error_description: allowEditDesc ? description : undefined,
       resolved: checked,
-      solutions
+      solutions: solutions.length !== 0 ? solutions : undefined
     });
   };
 
@@ -121,14 +123,26 @@ export const ResolveModal: ReactFCC<ResolveModalProps> = (props) => {
               onChange={(value) => setChecked(value)}
             />
 
-            <Button
-              className={s.ResolveModal__button}
-              variant={ButtonVariant.primary}
-              size={ButtonSize.small}
-              isLoading={isLoading}
-              onClick={() => onSubmit()}>
-              Сохранить
-            </Button>
+            <div className={s.ResolveModal__row}>
+              <Button
+                className={s.ResolveModal__button}
+                variant={ButtonVariant.primary}
+                size={ButtonSize.small}
+                isLoading={isLoading}
+                onClick={() => onSubmit()}>
+                Сохранить
+              </Button>
+
+              <Button
+                component={RouterLink}
+                to={PathBuilder.getNotifyPath(data.id)}
+                className={s.ResolveModal__button}
+                variant={ButtonVariant.secondary}
+                size={ButtonSize.small}
+                isLoading={isLoading}>
+                Отправить уведомление
+              </Button>
+            </div>
           </>
         )}
       </ModalBody>

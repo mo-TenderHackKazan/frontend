@@ -1,4 +1,4 @@
-import React, { ReactNode, useEffect, useRef } from 'react';
+import React, { ReactNode, useRef } from 'react';
 import clsx from 'clsx';
 import composeRefs from '@seznam/compose-react-refs';
 import s from './Textarea.module.scss';

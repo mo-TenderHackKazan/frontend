@@ -1,20 +1,24 @@
-import { useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
 import clsx from 'clsx';
 import { ReactFCC } from '../../../../utils/ReactFCC';
-import { useIsMobile } from '../../../../hooks/useIsMobile';
 import s from './Header.module.scss';
-import { HOME_PAGE_ROUTE } from '../../../../app/routes';
+import { ReactComponent as BurgerIcon } from './assets/burger.svg';
+import { useIsMobile } from '../../../../hooks/useIsMobile';
 
 export interface HeaderProps {
   /**
    * Дополнительный css-класс
    */
   className?: string;
+  /**
+   * Обработчик закрытия сайдбара
+   */
+  onOpenSidebar: () => void;
 }
 
 export const Header: ReactFCC<HeaderProps> = (props) => {
-  const { children, className } = props;
+  const { children, className, onOpenSidebar } = props;
+
+  const isMobile = useIsMobile();
 
   return (
     <div className={clsx(s.Header, className)}>
@@ -23,6 +27,8 @@ export const Header: ReactFCC<HeaderProps> = (props) => {
           <div className={s.Header__name}>Иванов Иван Петрович</div>
           <div className={s.Header__email}>ivan.ivanov.gmail.com</div>
         </button>
+
+        {isMobile && <BurgerIcon className={s.Header__burger} onClick={onOpenSidebar} />}
 
         {/*{isMobile && <IconButton icon={Icons.BURGER} variant={IconButtonVariant.ghost} onClick={onOpenSidebar} />}*/}
 

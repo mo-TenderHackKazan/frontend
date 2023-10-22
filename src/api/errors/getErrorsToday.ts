@@ -1,9 +1,8 @@
 import { useQuery } from '@tanstack/react-query';
 import { axios } from '../../lib/axios';
 import { ExtractFnReturnType, QueryConfig } from '../../lib/react-query';
-import { ErrorTypeResponse } from './types';
-import { ERRORS_TODAY_URL, ERRORS_TYPES_URL } from './urlKeys';
-import { QUERY_KEY_ERRORS_TODAY, QUERY_KEY_ERRORS_TYPES } from './queryKeys';
+import { ERRORS_TODAY_URL } from './urlKeys';
+import { QUERY_KEY_ERRORS_TODAY } from './queryKeys';
 
 export type GetErrorsTodayResponse = {
   amount: number;

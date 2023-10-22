@@ -1,9 +1,8 @@
 import { useQuery } from '@tanstack/react-query';
 import { axios } from '../../lib/axios';
 import { ExtractFnReturnType, QueryConfig } from '../../lib/react-query';
-import { ErrorTypeResponse } from './types';
-import { ERRORS_DATE_URL, ERRORS_TYPES_URL } from './urlKeys';
-import { QUERY_KEY_ERRORS_DATE, QUERY_KEY_ERRORS_TYPES } from './queryKeys';
+import { ERRORS_DATE_URL } from './urlKeys';
+import { QUERY_KEY_ERRORS_DATE } from './queryKeys';
 
 export type GetErrorsDateResponse = {
   date: string;

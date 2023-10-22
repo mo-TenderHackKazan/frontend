@@ -17,7 +17,7 @@
   width: 72px;
   height: 100%;
   overflow: hidden;
-  background: rgba(#264B82, 5%);
+  background: #eaeef6;
 
   @include mobile-down {
     width: 0;
@@ -25,7 +25,7 @@
 }
 
 .Sidebar_open {
-  width: 230px;
+  width: 260px;
 
   @include mobile-down {
     width: 100vw;
@@ -41,6 +41,11 @@
 }
 
 .Sidebar__toggleIcon {
+  @include mobile-down {
+    cursor: pointer;
+    color: $color-text-primary;
+  }
+
   @include mobile-up {
     @include transition(transform);
   }
@@ -53,10 +58,10 @@
   //  flex: 1;
   //}
 
-  .Sidebar__toggleIcon {
-    flex: auto;
-    transform: rotate(-180deg);
-  }
+  //.Sidebar__toggleIcon {
+  //  flex: auto;
+  //  transform: rotate(-180deg);
+  //}
 }
 
 .Sidebar__menu {

@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import s from './PieChart.module.scss';
 import { ReactFCC } from '../../../../../utils/ReactFCC';
-import { getElementAtEvent, Pie } from 'react-chartjs-2';
+import { Pie } from 'react-chartjs-2';
 import { ArcElement, Chart as ChartJS, ChartData, Legend, Tooltip } from 'chart.js';
 import { useRef } from 'react';
 import { ChartJSOrUndefined } from 'react-chartjs-2/dist/types';
