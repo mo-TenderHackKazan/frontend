@@ -7,60 +7,60 @@
   column-gap: $spacing-2xs;
 }
 
-.TypesTable__heading {
+.ManagePage {
+  padding: $spacing-xm;
+}
+
+.ManagePage__header {
+  @include flex;
+  align-items: flex-end;
+  column-gap: $spacing-2xm;
+  margin-bottom: $spacing-s;
+}
+
+.ManagePage__checkbox {
+  margin-bottom: 4px;
+}
+
+.ManagePage__heading {
   margin-bottom: $spacing-2xs;
 }
 
-.TypesTable {
+.ManagePage__sortFilter {
+  min-width: 200px !important;
+}
+
+.ManagePage__list {
+  @include flex-col;
+  row-gap: $spacing-s;
+}
+
+.ManagePage__row {
+  @include transition(background-color);
+
+  @include types-table-grid;
+  padding: $spacing-2xs $spacing-s;
   border: 1px solid $color-background-secondary;
   border-radius: $radius-small;
-  margin-bottom: $spacing-2xs;
+  max-width: 735px;
+
+  &:hover {
+    background-color: $color-background-secondary;
+  }
 }
 
-.TypesTable__more {
-  font-size: $font-size-14;
-}
-
-.TypesTable__header {
-  @include types-table-grid;
-  padding: $spacing-2xs $spacing-s;
-  border-radius: $radius-small $radius-small 0 0;
-  background-color: $color-background-quaternary;
-  border-bottom: 1px solid $color-background-secondary;
-}
-
-.TypesTable__headerActions {
-  @include actions-row;
-}
-
-.TypesTable__sortFilter {
-  min-width: 200px;
-}
-
-.TypesTable__headerItem {
-  @include text-body-s-regular;
-  font-weight: $font-weight-600;
-  justify-self: end;
-}
-
-.TypesTable__row {
-  @include types-table-grid;
-  padding: $spacing-2xs $spacing-s;
-  border-bottom: 1px solid $color-background-secondary;
-}
-
-.TypesTable__rowMain {
+.ManagePage__rowMain {
   @include flex-col;
   overflow-x: hidden;
 }
 
-.TypesTable__name {
+.ManagePage__name {
   text-align: left;
   width: fit-content;
   font-weight: $font-weight-600;
 }
 
-.TypesTable__rowMainText {
+.ManagePage__rowMainText {
   @include text-caption-m-regular;
   color: $color-text-primary;
   overflow-x: hidden;
@@ -69,7 +69,7 @@
   padding-right: $spacing-xm;
 }
 
-.TypesTable__date {
+.ManagePage__date {
   @include flex-middle;
   column-gap: 4px;
   color: $color-text-secondary;
@@ -80,21 +80,27 @@
   }
 }
 
-.TypesTable__check {
+.ManagePage__check {
   width: 16px;
   height: 16px;
   color: $color-text-tertiary;
 }
 
-.TypesTable__rowItem {
+.ManagePage__rowItem {
   justify-self: end;
+
+  > span:first-child {
+    font-size: $font-size-12;
+    display: block;
+    font-weight: $font-weight-600;
+  }
 
   &:last-child {
     justify-self: center;
   }
 }
 
-.TypesTable__expand {
+.ManagePage__expand {
   @include transition(color, opacity);
 
   width: 16px;
@@ -108,6 +114,6 @@
   }
 }
 
-.TypesTable__row:hover .TypesTable__expand {
+.ManagePage__row:hover .ManagePage__expand {
   opacity: 1;
 }

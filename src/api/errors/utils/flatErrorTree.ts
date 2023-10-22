@@ -21,7 +21,8 @@ export function flatErrorTree(errors: ErrorTypeResponse[]) {
       first_entry: error.first_entry,
       last_entry: error.last_entry,
       last_error_text: error.last_error_text,
-      amount: error.amount
+      amount: error.amount,
+      solutions: error.type.solutions
     })),
     (i) => i.name
   );

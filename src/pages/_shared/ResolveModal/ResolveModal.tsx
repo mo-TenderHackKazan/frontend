@@ -23,7 +23,7 @@ export interface ResolveModalProps {
 }
 
 export const ResolveModal: ReactFCC<ResolveModalProps> = (props) => {
-  const { className, isOpen, onClose, typeId, allowEditDesc } = props;
+  const { className, isOpen, onClose, typeId, allowEditDesc = true } = props;
 
   const [description, setDescription] = useState('');
   const [checked, setChecked] = useState(false);
@@ -116,7 +116,7 @@ export const ResolveModal: ReactFCC<ResolveModalProps> = (props) => {
 
             <Checkbox
               className={s.ResolveModal__checkbox}
-              label={'Отметить объект обработанным'}
+              label={'Отметить ошибку обработанной'}
               checked={checked}
               onChange={(value) => setChecked(value)}
             />

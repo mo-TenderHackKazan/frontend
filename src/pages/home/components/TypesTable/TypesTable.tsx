@@ -69,8 +69,8 @@ export const TypesTable: ReactFCC<TypesTableProps> = (props) => {
               onChange={(e) => setSortVariant(e.target.value as SortVariant)}>
               <option value={SortVariant.last_entry_asc}>По дате последней ошибки ↑</option>
               <option value={SortVariant.last_entry_desc}>По дате последней ошибки ↓</option>
-              <option value={SortVariant.amount_asc}>По количеству ↑</option>
-              <option value={SortVariant.amount_desc}>По количеству ↓</option>
+              <option value={SortVariant.amount_asc}>По количеству ошибок ↑</option>
+              <option value={SortVariant.amount_desc}>По количеству ошибок ↓</option>
             </FilterSelect>
           </div>
 

@@ -14,8 +14,8 @@ import { CrmError } from '../../api/errors/types';
 import { FilterSelect } from '../home/components/FilterSelect';
 
 enum SortVariant {
-  date_asc = 'amount_asc',
-  date_desc = 'amount_desc'
+  date_asc = 'date_asc',
+  date_desc = 'date_desc'
 }
 
 export interface LogPageProps {

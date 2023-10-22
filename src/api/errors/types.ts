@@ -4,6 +4,7 @@ export type ErrorType = {
   resolved: boolean;
   classes: any[];
   has_children: boolean;
+  solutions: number;
 };
 
 export type ErrorTypeResponse = {
