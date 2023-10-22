@@ -35,11 +35,15 @@ const menu: SidebarItemProps[] = [
   {
     to: '/manage',
     children: 'Пользовательские ошибки'
-  }
+  },
   // {
   //   to: '/notify',
   //   children: 'Уведомление пользователя'
   // }
+  {
+    to: '/report',
+    children: 'Отправить ошибку'
+  }
 ];
 
 export const Sidebar: ReactFCC<SidebarProps> = (props) => {

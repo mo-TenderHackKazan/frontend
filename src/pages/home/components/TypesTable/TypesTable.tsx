@@ -127,9 +127,9 @@ function TableRow({ id, name, last_entry, last_error_text, amount, resolved, onC
       </div>
 
       <div className={s.TypesTable__rowItem}>{amount}</div>
-      <div className={s.TypesTable__rowItem}>{resolved && <CheckIcon className={s.TypesTable__check} />}</div>
-      <div className={s.TypesTable__rowItem}>
-        <ExpandIcon className={s.TypesTable__expand} onClick={() => onClick()} />
+      <div className={s.TypesTable__rowItem}>{resolved && <CheckIcon className={s.TypesTable__status} />}</div>
+      <div className={clsx(s.TypesTable__rowItem, s.TypesTable__rowItem_expand)}>
+        <ExpandIcon className={s.TypesTable__expand} onClick={() => onClick()} title={'Редактирование категории'} />
       </div>
     </div>
   );

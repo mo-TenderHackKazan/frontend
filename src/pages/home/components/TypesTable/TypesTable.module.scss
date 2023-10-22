@@ -5,6 +5,10 @@
   align-items: center;
   grid-template-columns: 70% 10% 10% auto;
   column-gap: $spacing-2xs;
+
+  @include mobile-down {
+    grid-template-columns: 50% 20% 15% auto;
+  }
 }
 
 .TypesTable__heading {
@@ -27,20 +31,43 @@
   border-radius: $radius-small $radius-small 0 0;
   background-color: $color-background-quaternary;
   border-bottom: 1px solid $color-background-secondary;
+
+  @include mobile-down {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+
+    > div:first-child {
+      flex: 1 0 100%;
+      margin-bottom: 4px;
+    }
+
+    > div:nth-child(2) {
+      margin-left: 50%;
+    }
+  }
 }
 
 .TypesTable__headerActions {
   @include actions-row;
+
+  @include mobile-down {
+    flex: 1;
+  }
 }
 
 .TypesTable__sortFilter {
-  min-width: 200px;
+  min-width: 220px;
 }
 
 .TypesTable__headerItem {
   @include text-body-s-regular;
   font-weight: $font-weight-600;
   justify-self: end;
+
+  @include mobile-down {
+    font-size: $font-size-12;
+  }
 }
 
 .TypesTable__row {
@@ -58,6 +85,10 @@
   text-align: left;
   width: fit-content;
   font-weight: $font-weight-600;
+
+  @include mobile-down {
+    font-size: 12px;
+  }
 }
 
 .TypesTable__rowMainText {
@@ -80,31 +111,38 @@
   }
 }
 
-.TypesTable__check {
+.TypesTable__status {
   width: 16px;
   height: 16px;
-  color: $color-text-tertiary;
+  color: darken($color-text-tertiary, 10%);
 }
 
 .TypesTable__rowItem {
-  justify-self: end;
+  justify-self: center;
+
+  @include mobile-up {
+    justify-self: end;
+  }
 
   &:last-child {
     justify-self: center;
   }
 }
 
+.TypesTable__rowItem_expand {
+  margin-left: auto;
+}
+
 .TypesTable__expand {
   @include transition(color, opacity);
 
-  width: 16px;
-  height: 16px;
-  opacity: 0;
+  width: 20px;
+  height: 20px;
   cursor: pointer;
-  color: $color-text-tertiary;
+  color: $color-system-link;
 
   &:hover {
-    color: $color-text-primary;
+    color: $color-system-link;
   }
 }
 

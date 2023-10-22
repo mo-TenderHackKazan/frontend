@@ -108,7 +108,7 @@ export const LastActivityTimelineChart: ReactFCC<LastActivityTimelineChartProps>
             <>
               <Link
                 className={s.LastActivityTimelineChart__reset}
-                variant={LinkVariant.SECONDARY}
+                variant={LinkVariant.PRIMARY}
                 onClick={() => {
                   setActive(undefined);
                 }}>
@@ -117,7 +117,7 @@ export const LastActivityTimelineChart: ReactFCC<LastActivityTimelineChartProps>
               <br />
             </>
           )}
-          <span>Всего ошибок: {totalAmount}</span>
+          <span>Всего ошибок: {totalAmount ?? 0}</span>
         </>
       }
       headerContent={

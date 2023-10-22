@@ -39,7 +39,7 @@ export const HomePage: ReactFCC<HomePageProps> = (props) => {
         <DataLayout
           classes={{ inner: s.HomePage__overviewData, title: s.HomePage__overviewTitle }}
           title={'Ошибок за сегодня'}
-          bigNumber={errorsTodayData?.amount}
+          bigNumber={errorsTodayData?.amount ?? 0}
         />
       </div>
 

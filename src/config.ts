@@ -1,4 +1,4 @@
-// export const BACKEND_ADDR = '192.168.2.237:8000';
+// export const BACKEND_ADDR = 'e767-91-199-224-67.ngrok-free.app';
 export const BACKEND_ADDR = '10.9.67.36:8000';
 
 // export const BACKEND_URL = 'https://' + BACKEND_ADDR;

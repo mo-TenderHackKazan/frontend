@@ -28,7 +28,7 @@ export interface LogPageProps {
 export const LogPage: ReactFCC<LogPageProps> = (props) => {
   const { className } = props;
 
-  const [sortVariant, setSortVariant] = useState(SortVariant.date_asc);
+  const [sortVariant, setSortVariant] = useState(SortVariant.date_desc);
 
   const [typeId] = useQueryParam(URL_KEY_TYPE);
 

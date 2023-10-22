@@ -87,7 +87,7 @@ export const TotalByTypesChart: ReactFCC<TotalByTypesProps> = (props) => {
             <>
               <Link
                 className={s.TotalByTypes__reset}
-                variant={LinkVariant.SECONDARY}
+                variant={LinkVariant.PRIMARY}
                 onClick={() => {
                   setActive(undefined);
                   setDate('');
@@ -99,7 +99,7 @@ export const TotalByTypesChart: ReactFCC<TotalByTypesProps> = (props) => {
               <br />
             </>
           )}
-          <span>Всего ошибок: {totalAmount ?? '–'}</span>
+          <span>Всего ошибок: {totalAmount ?? 0}</span>
         </>
       }
       headerContent={

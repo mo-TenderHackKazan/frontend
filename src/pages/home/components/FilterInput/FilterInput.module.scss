@@ -2,10 +2,10 @@
 
 .FilterInput {
   @include flex-col;
-  //gap: $spacing-3xs;
 }
 
 .FilterInput__input {
+  min-width: 100px;
   width: fit-content;
   min-height: 26px !important;
   padding: 0 8px !important;

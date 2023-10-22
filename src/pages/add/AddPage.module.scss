@@ -1,0 +1,20 @@
+@import 'src/app/styles/vars';
+
+.AddPage {
+  padding: $spacing-xm;
+}
+
+.AddPage__heading {
+  margin-bottom: $spacing-2xm;
+}
+
+.AddPage__content {
+  @include flex-col;
+  gap: $spacing-s;
+  max-width: 500px;
+  margin-bottom: $spacing-2xm;
+}
+
+.AddPage__json {
+  @include text-programming-code-regular;
+}

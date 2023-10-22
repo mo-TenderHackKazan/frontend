@@ -147,9 +147,10 @@ function Card({ id, name, solutions_count, last_entry, amount, resolved, onClick
 
       <div className={s.ManagePage__rowItem}>
         <span>Ошибок</span>
+        <br />
         <span>{amount}</span>
       </div>
-      <div className={s.ManagePage__rowItem}>{resolved && <CheckIcon className={s.ManagePage__check} />}</div>
+      <div className={s.ManagePage__rowItem}>{resolved && <CheckIcon className={s.ManagePage__status} />}</div>
       <div className={s.ManagePage__rowItem}>
         <ExpandIcon className={s.ManagePage__expand} onClick={() => onClick()} />
       </div>

@@ -53,7 +53,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "rimraf build tenderhack-chatbot.zip && react-scripts build && zip -r tenderhack-chatbot.zip build",
+    "build": "rimraf build tenderhack-dashboard.zip && react-scripts build && zip -r tenderhack-dashboard.zip build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
