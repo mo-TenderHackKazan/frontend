@@ -37,7 +37,7 @@ export const LogPage: ReactFCC<LogPageProps> = (props) => {
 
   useEffect(() => {
     refetch();
-  }, [typeId]);
+  }, [typeId, refetch]);
 
   const count = data?.pages[0].count ?? 0;
   const errors = data?.pages.flatMap((page) => page.results || []) || [];

@@ -11,6 +11,7 @@ export type ErrorTypeResponse = {
   type: ErrorType;
   first_entry: string;
   last_entry: string;
+  last_error_text: string;
   amount: number;
   children: ErrorTypeResponse[];
 };
@@ -23,4 +24,14 @@ export type CrmError = {
   filtered: string;
   params: string[];
   body: string;
+};
+
+export type DetailedErrorType = {
+  id: number;
+  total: number;
+  name: string;
+  error_description: string;
+  resolved: boolean;
+  solutions: string[];
+  entries: CrmError[];
 };

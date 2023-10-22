@@ -69,18 +69,6 @@ const TextareaForwardedRef = React.forwardRef<HTMLDivElement, TextAreaProps>(
     const delegateProps = useDelegateFocus<HTMLDivElement, HTMLInputElement>(inputRef, { onClick });
     const { focused, ...focusProps } = useFocus({ ...inputProps, ...registration });
 
-    if (inputRef.current) {
-      inputRef.current.style.height = '1px';
-      inputRef.current.style.height = inputRef.current.scrollHeight + 'px';
-    }
-
-    useEffect(() => {
-      if (inputRef.current) {
-        inputRef.current.style.height = '1px';
-        inputRef.current.style.height = inputRef.current.scrollHeight + 'px';
-      }
-    }, [value]);
-
     return (
       <div
         ref={ref}
@@ -105,13 +93,6 @@ const TextareaForwardedRef = React.forwardRef<HTMLDivElement, TextAreaProps>(
           {...inputProps}
           {...focusProps}
           // @ts-ignore
-          onInput={(e) => {
-            if (inputRef.current) {
-              inputRef.current.style.height = '1px';
-              inputRef.current.style.height = inputRef.current.scrollHeight + 'px';
-            }
-            setTimeout(() => {});
-          }}
           value={value}
         />
 

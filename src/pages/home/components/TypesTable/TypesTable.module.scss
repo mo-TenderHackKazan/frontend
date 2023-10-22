@@ -3,7 +3,7 @@
 @mixin types-table-grid {
   display: grid;
   align-items: center;
-  grid-template-columns: 70% 15% auto;
+  grid-template-columns: 70% 10% 10% auto;
   column-gap: $spacing-2xs;
 }
 
@@ -41,7 +41,6 @@
   @include text-body-s-regular;
   font-weight: $font-weight-600;
   justify-self: end;
-  padding-right: $spacing-s;
 }
 
 .TypesTable__row {
@@ -89,5 +88,20 @@
 
 .TypesTable__rowItem {
   justify-self: end;
-  padding-right: $spacing-s;
+
+  &:last-child {
+    justify-self: center;
+  }
+}
+
+.TypesTable__expand {
+  width: 16px;
+  height: 16px;
+  opacity: 0;
+  cursor: pointer;
+  color: $color-text-tertiary;
+}
+
+.TypesTable__row:hover .TypesTable__expand {
+  opacity: 1;
 }

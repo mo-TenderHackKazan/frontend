@@ -9,7 +9,8 @@
 .ModalContainer__wrapper {
   display: flex;
   width: 600px;
-  max-height: calc(100vh - $spacing-medium-x * 2);
+  height: 100%;
+  //max-height: calc(100vh - $spacing-medium-x * 2);
   background: $color-background-primary;
   padding: $spacing-small-x;
 
@@ -19,7 +20,7 @@
 
   @include media-down(tablet-small) {
     width: 100%;
-    max-height: calc(100vh - $spacing-small * 2);
+    //max-height: calc(100vh - $spacing-small * 2);
     margin-top: auto;
     background: $color-background-primary;
   }
@@ -29,4 +30,5 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+  height: 100%;
 }

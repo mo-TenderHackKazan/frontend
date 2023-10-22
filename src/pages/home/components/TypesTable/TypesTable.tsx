@@ -5,13 +5,15 @@ import { FilterSelect } from '../FilterSelect';
 import { Link } from '../../../../components/Link';
 import { ReactComponent as ClockIcon } from './assets/clock.svg';
 import { ReactComponent as CheckIcon } from './assets/check.svg';
+import { ReactComponent as ExpandIcon } from './assets/expand.svg';
 import format from 'date-fns/format';
 import { ETextVariants, Text } from '../../../../components/Text';
 import { useFlattenErrorTypes } from '../../../../api/errors';
 import { Link as RouterLink } from 'react-router-dom';
 import { PathBuilder } from '../../../../app/routes';
 import { useState } from 'react';
-import { orderBy, sortBy } from 'lodash-es';
+import { orderBy } from 'lodash-es';
+import { ResolveModal } from '../../../_shared/ResolveModal';
 
 export interface TypesTableProps {
   /**
@@ -32,6 +34,8 @@ export const TypesTable: ReactFCC<TypesTableProps> = (props) => {
 
   const [sortVariant, setSortVariant] = useState(SortVariant.last_entry_desc);
   const [expanded, setExpanded] = useState(false);
+
+  const [active, setActive] = useState<number | null>(null);
 
   const { data } = useFlattenErrorTypes({});
 
@@ -72,6 +76,7 @@ export const TypesTable: ReactFCC<TypesTableProps> = (props) => {
 
           <div className={s.TypesTable__headerItem}>Ошибки</div>
           <div className={s.TypesTable__headerItem}>Статус</div>
+          <div className={s.TypesTable__headerItem}></div>
         </div>
 
         {sortedData.map((item, index) => (
@@ -80,7 +85,9 @@ export const TypesTable: ReactFCC<TypesTableProps> = (props) => {
             name={item.name}
             amount={item.amount}
             last_entry={item.last_entry}
+            last_error_text={item.last_error_text}
             resolved={item.type.resolved}
+            onClick={() => setActive(item.type.id)}
             key={index}
           />
         ))}
@@ -89,6 +96,8 @@ export const TypesTable: ReactFCC<TypesTableProps> = (props) => {
       <Link className={s.TypesTable__more} onClick={() => setExpanded((expanded) => !expanded)}>
         {expanded ? 'Свернуть' : 'Показать все'}
       </Link>
+
+      <ResolveModal typeId={active ?? undefined} isOpen={!!active} onClose={() => setActive(null)} />
     </div>
   );
 };
@@ -97,20 +106,20 @@ type TableRowProps = {
   id: number;
   name: string;
   last_entry: string;
+  last_error_text: string;
   amount: number;
   resolved: boolean;
+  onClick: () => void;
 };
 
-function TableRow({ id, name, last_entry, amount, resolved }: TableRowProps) {
+function TableRow({ id, name, last_entry, last_error_text, amount, resolved, onClick }: TableRowProps) {
   return (
     <div className={s.TypesTable__row}>
       <div className={s.TypesTable__rowMain}>
         <Link className={s.TypesTable__name} component={RouterLink} to={PathBuilder.getErrorsLogByType(id)}>
           {name}
         </Link>
-        <span className={s.TypesTable__rowMainText}>
-          No URL to redirect to. Either provide a url or define a get_absolute_url method on the Model.
-        </span>
+        <span className={s.TypesTable__rowMainText}>{last_error_text}</span>
         <div className={s.TypesTable__date}>
           <ClockIcon />
           <span>{format(new Date(last_entry), 'dd.MM.yyyy HH:mm')}</span>
@@ -119,6 +128,9 @@ function TableRow({ id, name, last_entry, amount, resolved }: TableRowProps) {
 
       <div className={s.TypesTable__rowItem}>{amount}</div>
       <div className={s.TypesTable__rowItem}>{resolved && <CheckIcon className={s.TypesTable__check} />}</div>
+      <div className={s.TypesTable__rowItem}>
+        <ExpandIcon className={s.TypesTable__expand} onClick={() => onClick()} />
+      </div>
     </div>
   );
 }

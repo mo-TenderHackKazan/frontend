@@ -17,7 +17,7 @@
   width: 72px;
   height: 100%;
   overflow: hidden;
-  background: rgba(#E7EEF7, 50%);
+  background: rgba(#264B82, 5%);
 
   @include mobile-down {
     width: 0;
@@ -25,7 +25,7 @@
 }
 
 .Sidebar_open {
-  width: 260px;
+  width: 230px;
 
   @include mobile-down {
     width: 100vw;
@@ -38,8 +38,6 @@
   padding: 0 $spacing-s;
   row-gap: $spacing-m;
   height: $header-height;
-  //background-color: $color-background-primary;
-  //border-bottom: 1px solid $color-divider-dark;
 }
 
 .Sidebar__toggleIcon {

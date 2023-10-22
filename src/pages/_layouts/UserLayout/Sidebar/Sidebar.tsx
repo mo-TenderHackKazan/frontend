@@ -29,7 +29,7 @@ const menu: SidebarItemProps[] = [
   },
   {
     to: '/manage',
-    children: 'Менеджмент'
+    children: 'Пользовательские ошибки'
   }
 ];
 

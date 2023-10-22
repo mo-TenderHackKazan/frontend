@@ -20,7 +20,7 @@
   cursor: text;
   box-sizing: border-box;
 
-  &:hover {
+  &:not(.Input_disabled):hover {
     border-color: $color-system-link-hover;
   }
 }
@@ -36,7 +36,7 @@
 .Input_disabled {
   color: $color-text-tertiary;
   border-color: transparent;
-  background: $color-on-surface-dark-300;
+  background: $color-background-secondary;
   cursor: default;
 
   &:hover {

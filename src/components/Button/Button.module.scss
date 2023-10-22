@@ -15,7 +15,7 @@ $button-box-shadow-sizes: 0 20px 80px -20px;
   text-decoration: none;
   color: $color-text-secondary;
   border: $button-border-width solid transparent;
-  //border-radius: $radius-medium;
+  border-radius: $radius-small;
   background-color: rgb(255 255 255 / 0%);
   box-shadow: none;
   user-select: none;
@@ -68,7 +68,7 @@ $button-box-shadow-sizes: 0 20px 80px -20px;
 }
 
 .Button__loader {
-  color: $color-text-primary;
+  color: $color-background-primary;
 }
 
 .Button__loader,
@@ -88,14 +88,15 @@ $button-box-shadow-sizes: 0 20px 80px -20px;
 }
 
 .Button_size_small_x {
-  height: 32px;
-  min-height: 32px;
-  font-size: $font-size-14;
+  height: 28px;
+  min-height: 28px;
+  font-size: $font-size-12;
 }
 
 .Button_size_small {
   height: 32px;
   min-height: 32px;
+  font-size: $font-size-14;
 }
 
 .Button_size_medium {

@@ -1,0 +1,29 @@
+@import 'src/app/styles/vars';
+
+.ResolveModal {
+
+}
+
+.ResolveModal__body {
+  @include flex-col;
+
+  row-gap: $spacing-s;
+}
+
+.ResolveModal__label {
+  margin-bottom: $spacing-3xs;
+  font-size: $font-size-14;
+}
+
+.ResolveModal__row {
+  @include flex;
+  column-gap: $spacing-small-2x;
+}
+
+.ResolveModal__checkbox {
+  margin-top: $spacing-s;
+}
+
+.ResolveModal__button {
+  margin-top: $spacing-s;
+}

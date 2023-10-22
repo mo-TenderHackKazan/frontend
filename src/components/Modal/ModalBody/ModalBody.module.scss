@@ -1,9 +1,9 @@
 @import 'src/app/styles/vars';
 
 .ModalBody {
-  @include scrollbar;
+  //@include scrollbar;
 
-  overflow-y: auto;
+  //overflow-y: auto;
 
   @include media-down(tablet-small) {
     border-radius: 0 0 $radius-small $radius-small;

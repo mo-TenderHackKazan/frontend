@@ -65,8 +65,8 @@
 
 .Checkbox_checked {
   &:hover {
-    .Checkbox__icon:not(.Checkbox__icon_radio) {
-      background-color: $color-accent-blue-100;
+    .Checkbox__icon:not(.Checkbox__icon_radio, .Checkbox_checked) {
+      //background-color: $color-accent-blue-100;
     }
 
     .Checkbox__icon_radio {

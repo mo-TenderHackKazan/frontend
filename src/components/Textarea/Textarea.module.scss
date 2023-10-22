@@ -8,19 +8,22 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: 15px $spacing-small-x;
+  min-height: 40px;
+  padding: $spacing-small-x $spacing-small-x;
   color: $color-text-primary;
   overflow: hidden;
-  border: 1px solid $color-border-default;
+  //border: 1px solid $color-border-default;
+  border: 1px solid $color-divider-dark;
   border-radius: $radius-small;
   background-color: $color-background-primary;
   cursor: text;
   box-sizing: border-box;
   overflow-y: auto;
   word-wrap: break-word;
+  font-size: $font-size-12;
 
-  &:hover:not(.Input_focus, .Input_error) {
-    border-color: $color-border-hover;
+  &:hover {
+    border-color: $color-system-link-hover;
   }
 }
 
@@ -29,7 +32,7 @@
 }
 
 .Input_focus {
-  border-color: $color-border-active;
+  border-color: $color-system-link-hover;
 }
 
 .Input_disabled {
@@ -52,8 +55,6 @@
   flex-grow: 1;
   min-width: 0;
   height: 100%;
-  resize: none;
-  //white-space: break-spaces;
 
   &:placeholder-shown + .Input__clear {
     display: none;
